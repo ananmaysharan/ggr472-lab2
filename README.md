@@ -4,4 +4,4 @@
 
 Click on a station to view the name and number of docks/bikes at the station.
 
-Data courtesy of [Open Data Toronto](https://open.toronto.ca/)
+Data courtesy of [Open Data Toronto](https://open.toronto.ca/).
