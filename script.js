@@ -1,6 +1,5 @@
 mapboxgl.accessToken = "pk.eyJ1IjoiYW5hbm1heSIsImEiOiJjbDk0azNmY3oxa203M3huMzhyZndlZDRoIn0.1L-fBYplQMuwz0LGctNeiA";
 
-
 // create map
 
 const map = new mapboxgl.Map({
@@ -15,7 +14,7 @@ map.on('load', () => {
     map.addSource('cycling', {
         type: 'geojson',
         // Use a URL for the value for the `data` property.
-        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/cycling-network.geojson'
+        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/cycling-network.geojson?token=GHSAT0AAAAAABYZDMGEPOATCE2E4EULOSFMY7KS7GA'
     });
 
     map.addLayer({
@@ -28,17 +27,13 @@ map.on('load', () => {
     map.addSource('bikeshare', {
         type: 'geojson',
         // Using a URL for the value for the `data` property.
-        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/bikeshare.geojson'
+        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/bikeshare.geojson?token=GHSAT0AAAAAABYZDMGERGWFMTOVGMIMVGKWY7KTDBA'
     });
 
     map.addLayer({
         'id': 'bikesharestations',
         'type': 'point',
         'source': 'bikeshare', //must match source ID from addSource method
-        'paint': {
-            'fill-color': '#888888',
-            'fill-opacity': 1,
-        },
     }
     );
 });
