@@ -12,54 +12,33 @@ const map = new mapboxgl.Map({
 });
 
 map.on('load', () => {
-    /*ADDING A SOURCE FROM A GEOJSON FILE*/
-    map.addSource('uoft', {
-        type: 'geojson',
-        data: {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": {
-                        "name": "Sidney Smith Hall"
-                    },
-                    "geometry": {
-                        "coordinates": [
-                            -79.39865237301687,
-                            43.662343395037766
-                        ],
-                        "type": "Point"
-                    }
-                }
-            ]
-        }
-    })
-    map.addLayer({
-        'id': 'uoft-buildings',
-        'type': 'circle',
-        'source': 'uoft',
-        'paint': {
-            'circle-radius': 6,
-            'circle-color': '#B42222'
-        }
-    });
-
-    map.addSource('ct', {
+    map.addSource('cycling', {
         type: 'geojson',
         // Use a URL for the value for the `data` property.
-        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab1/main/torontoct.geojson'
-        });
+        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/cycling-network.geojson'
+    });
 
-        map.addLayer({
-            'id': 'ctadd',
-            'type': 'fill',
-            'source': 'ct', //must match source ID from addSource method
-            'paint': {
-                'fill-color': '#888888',
-                'fill-opacity': 0.4,
-                'fill-outline-color': 'black'
-            },
+    map.addLayer({
+        'id': 'cyclingnetwork',
+        'type': 'line',
+        'source': 'cycling', //must match source ID from addSource method
+    }
+    );
+
+    map.addSource('bikeshare', {
+        type: 'geojson',
+        // Using a URL for the value for the `data` property.
+        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/bikeshare.geojson'
+    });
+
+    map.addLayer({
+        'id': 'bikesharestations',
+        'type': 'point',
+        'source': 'bikeshare', //must match source ID from addSource method
+        'paint': {
+            'fill-color': '#888888',
+            'fill-opacity': 1,
         },
-             'uoft-buildings' //Drawing order - place below points
-        );
+    }
+    );
 });
