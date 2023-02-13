@@ -13,52 +13,38 @@ const map = new mapboxgl.Map({
 
 map.on('load', () => {
     /*ADDING A SOURCE FROM A GEOJSON FILE*/
-    map.addSource('uoft', {
+    map.addSource('bikeshare', {
         type: 'geojson',
-        data: {
-            "type": "FeatureCollection",
-            "features": [
-                {
-                    "type": "Feature",
-                    "properties": {
-                        "name": "Sidney Smith Hall"
-                    },
-                    "geometry": {
-                        "coordinates": [
-                            -79.39865237301687,
-                            43.662343395037766
-                        ],
-                        "type": "Point"
-                    }
-                }
-            ]
-        }
+        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/bikeshare.geojson?token=GHSAT0AAAAAABYZDMGERGWFMTOVGMIMVGKWY7KTDBA'
     })
     map.addLayer({
-        'id': 'uoft-buildings',
+        'id': 'bikesharenetwork',
         'type': 'circle',
-        'source': 'uoft',
+        'source': 'bikeshare',
         'paint': {
             'circle-radius': 6,
             'circle-color': '#B42222'
         }
     });
 
-    map.addSource('ct', {
+    map.addSource('cycling', {
         type: 'geojson',
         // Use a URL for the value for the `data` property.
-        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab1/main/torontoct.geojson'
+        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/cycling-network.geojson'
         });
 
         map.addLayer({
-            'id': 'ctadd',
-            'type': 'fill',
-            'source': 'ct', //must match source ID from addSource method
-            'paint': {
-                'fill-color': '#888888',
-                'fill-opacity': 0.4,
-                'fill-outline-color': 'black'
-            },
+            'id': 'cyclinglines',
+            'type': 'line',
+            'source': 'cycling', //must match source ID from addSource method
+            'layout': {
+                'line-join': 'round',
+                'line-cap': 'round'
+                },
+                'paint': {
+                'line-color': '#888',
+                'line-width': 8
+                }
         },
              'uoft-buildings' //Drawing order - place below points
         );
