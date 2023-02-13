@@ -24,7 +24,8 @@ map.on('load', () => {
             'circle-radius': 6,
             'circle-color': '#B42222'
         }
-    });
+    }
+    );
 
     map.addSource('cycling', {
         type: 'geojson',
@@ -34,17 +35,12 @@ map.on('load', () => {
 
         map.addLayer({
             'id': 'cyclinglines',
-            'type': 'fill',
+            'type': 'line',
             'source': 'cycling', //must match source ID from addSource method
-            'layout': {
-                'line-join': 'round',
-                'line-cap': 'round'
-                },
-                'paint': {
+            'paint': {
                 'line-color': '#888',
                 'line-width': 8
-                }
+            }
         },
-             'uoft-buildings' //Drawing order - place below points
         );
 });
