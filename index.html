@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,14 +10,19 @@
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <!-- Map  -->
-    <div id="map" class = "map"></div> 
+    <!-- Map -->
+    <div id="map" class="map"></div>
+    <!-- Legend and Title -->
+    <pre id="title"></pre>
     <div id="legend" class="legend">
         <h4>Legend</h4>
         <div><span style="background-color: #B42222"></span>Bike Share Stations</div>
         <div><span style="background-color: #B42222; opacity:0.4"></span>Toronto Bikeways</div>
-        </div>
+    </div>
+    <!-- Mapbox Script -->
     <script src="script.js"></script>
 </body>
+
 </html>

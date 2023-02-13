@@ -18,19 +18,19 @@ map.on('load', () => {
         type: 'geojson',
         // using a URL for the external geojson to load.
         data: 'https://ananmaysharan.github.io/ggr472-lab2/cycling-network.geojson'
-        });
+    });
 
-        map.addLayer({
-            'id': 'cyclinglines',
-            'type': 'line',
-            'source': 'cycling', // matching source ID from addSource method
-            'paint': { // styling line
-                'line-color': '#b42222',
-                'line-width': 3,
-                'line-opacity': 0.4
-            }
-        },
-        );
+    map.addLayer({
+        'id': 'cyclinglines',
+        'type': 'line',
+        'source': 'cycling', // matching source ID from addSource method
+        'paint': { // styling line
+            'line-color': '#b42222',
+            'line-width': 3,
+            'line-opacity': 0.4
+        }
+    },
+    );
 
     map.addSource('bikeshare', {
         type: 'geojson',
@@ -52,25 +52,27 @@ map.on('load', () => {
     // location of the feature, with station name and the number of bike docks in HTML, from its properties.
 
     map.on('click', 'bikesharenetwork', (e) => {
-    const coordinates = e.features[0].geometry.coordinates.slice(); // get coordinates
-    const station = e.features[0].properties.station; // get station name
-    const docks = e.features[0].properties.Total_docks; // get number of docks
+        const coordinates = e.features[0].geometry.coordinates.slice(); // get coordinates
+        const station = e.features[0].properties.station; // get station name
+        const docks = e.features[0].properties.Total_docks; // get number of docks
 
-     
-    // Ensure that if the map is zoomed out such that multiple
-    // copies of the feature are visible, the popup appears
-    // over the copy being pointed to. (from mapbox example)
-    while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-    coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-    }
-     
-    new mapboxgl.Popup() // creating popup
-    .setLngLat(coordinates) // setting coords
-    .setHTML('<p>' + "Station Name: " + station + '<br>' + "Bike Docks: " + docks + '</p>') // adding HTML
-    .addTo(map);
+
+        // Ensure that if the map is zoomed out such that multiple
+        // copies of the feature are visible, the popup appears
+        // over the copy being pointed to. (from mapbox example)
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+            coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+
+        new mapboxgl.Popup() // creating popup
+            .setLngLat(coordinates) // setting coords
+            .setHTML('<p>' + "Station Name: " + station + '<br>' + "Bike Docks: " + docks + '</p>') // adding HTML
+            .addTo(map);
     });
 
-    const LegendEl = document.getElementById('state-legend'); // adding legend constant
+    document.getElementById('state-legend'); // adding legend 
+    document.getElementById('title').innerHTML = "Map of Toronto Bikeways and Bike Share Stations"
 
-    
+
+
 });
