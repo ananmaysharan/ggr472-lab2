@@ -18,9 +18,17 @@ map.on('load', () => {
     });
 
     map.addLayer({
-        'id': 'cyclingnetwork',
+        'id': 'cycling',
         'type': 'line',
         'source': 'cycling', //must match source ID from addSource method
+        'layout': {
+            'line-join': 'round',
+            'line-cap': 'round'
+            },
+            'paint': {
+            'line-color': '#888',
+            'line-width': 8
+            }
     }
     );
 
@@ -31,9 +39,13 @@ map.on('load', () => {
     });
 
     map.addLayer({
-        'id': 'bikesharestations',
-        'type': 'point',
+        'id': 'bikeshare',
+        'type': 'circle',
         'source': 'bikeshare', //must match source ID from addSource method
+        'paint': {
+            'circle-radius': 6,
+            'circle-color': '#B42222'
+            },
     }
     );
 });
