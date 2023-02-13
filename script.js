@@ -12,10 +12,9 @@ const map = new mapboxgl.Map({
 });
 
 map.on('load', () => {
-    /*ADDING A SOURCE FROM A GEOJSON FILE*/
     map.addSource('bikeshare', {
         type: 'geojson',
-        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/bikeshare.geojson?token=GHSAT0AAAAAABYZDMGERGWFMTOVGMIMVGKWY7KTDBA'
+        data: 'https://ananmaysharan.github.io/ggr472-lab2/bikeshare.geojson'
     })
     map.addLayer({
         'id': 'bikesharenetwork',
@@ -30,12 +29,12 @@ map.on('load', () => {
     map.addSource('cycling', {
         type: 'geojson',
         // Use a URL for the value for the `data` property.
-        data: 'https://raw.githubusercontent.com/ananmaysharan/ggr472-lab2/main/cycling-network.geojson'
+        data: 'https://ananmaysharan.github.io/ggr472-lab2/cycling-network.geojson'
         });
 
         map.addLayer({
             'id': 'cyclinglines',
-            'type': 'line',
+            'type': 'fill',
             'source': 'cycling', //must match source ID from addSource method
             'layout': {
                 'line-join': 'round',
