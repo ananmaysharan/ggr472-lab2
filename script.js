@@ -48,6 +48,28 @@ map.on('load', () => {
     }
     );
 
+    // adding indigenous territories
+
+    map.addSource('native-land', {
+        type: 'vector',
+        url: 'mapbox://nativeland.cjh3mywgg04aaahpidhgio50e-9ctzy'
+        });
+
+    map.addLayer(
+        {
+            'id': 'native-land-data',
+            'type': 'fill',
+            'source': 'native-land',
+            'source-layer': 'nativelands-src',
+            'paint': {
+               'line-color': '#ff69b4',
+               'line-width': 1
+            }
+        },
+    );
+
+    
+
     // When a click event occurs on a feature in the bike stations layer, open a popup at the
     // location of the feature, with station name and the number of bike docks in HTML, from its properties.
 
